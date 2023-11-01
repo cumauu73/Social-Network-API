@@ -1,12 +1,7 @@
-const mongoose = require('mongoose');
+const { connect, connection } = require('mongoose')
 
-mongoose.set('strictQuery', true);
+const connectionString = process.env.MONGDB_URI || 'mongodb://127.0.0.1:27017/socialNetworkDB'
 
-// Wrap Mongoose around local connection to MongoDB
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017/socialmedia', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-});
+connect(connectionString)
 
-// Export connection 
-module.exports = mongoose.connection;
+module.exports = connection
