@@ -1,45 +1,37 @@
-const moment = require('moment');
+const { Schema, model } = require('mongoose')
+const reactionSchema = require('./schemas/reactions')
+const { Timestamp } = require('bson')
 
-// Define Mongoose
-const { Schema, model } = require('mongoose');
-
-const reactionSchema = require('./Reaction');
-
-//  Define the shape of the documents within the collection.
 const thoughtSchema = new Schema(
-    {
-      thoughtText: {
-        type: String,
-        required: 'A thought is required',
-        minlength: 1,
-        maxlength: 280,
-      },
-      createdAt: {
-        type: Date,
-        default: Date.now,
-        get: (timestamp) => moment(timestamp).format('MMM Do, YYYY [at] hh:mm a'),
-      },
-      username: {
-        type: String,
-        required: true,
-      },
-      reactions: [reactionSchema],
+  {
+    thoughtText: {
+      type: String,
+      required: true,
+      min: 1,
+      max: 280
     },
-    {
-      toJSON: {
-        getters: true,
-      },
-      id: false,
+    username: {
+      type: String,
+      required: true
+    },
+    reactions: [reactionSchema]
+  },
+  {
+    timestamps: true,
+    toJSON: {
+      getters: true,
+      virtuals: true
     }
-  );
-  
+  },
 
-  thoughtSchema.virtual('reactionCount').get(function () {
-    return this.reactions.length;
-  });
-  
-  // thoughtSchema is the name of the schema we are using to create a new instance of the model
-  const Thought = model('Thought', thoughtSchema);
-  
-  module.exports = Thought;
-  
+
+)
+
+thoughtSchema.virtual('reactionCount')
+  .get(function () {
+    return this.reactions.length
+  })
+
+const Thought = model('Thought', thoughtSchema)
+
+module.exports = Thought
