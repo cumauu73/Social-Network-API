@@ -13,3 +13,4 @@ connect.once('open', () => {
   }
   seedDB().then(() => { connect.close() })
 })
+

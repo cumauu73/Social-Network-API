@@ -6,8 +6,8 @@ const users = [
     email: 'cuma@gmail.com',
   },
   {
-    username: 'cumau',
-    email: 'cumau@gmail.com'
+    username: 'cumauu',
+    email: 'cumauu@gmail.com'
   }
 ]
 
@@ -18,7 +18,7 @@ const thoughts = [
   },
   {
     thoughtText: 'I do not like this site',
-    username: 'cumau'
+    username: 'cumauu'
   }
 ]
 
