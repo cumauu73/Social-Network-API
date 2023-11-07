@@ -8,7 +8,7 @@ This is an API for a social network we application using the Express and Mogoose
 
 - [Installation](#installation)
 - [Usage](#usage)
-- [Video Walkthrough](#screenshot)
+- [Video Walkthrough](https://cumauu73.github.io/Social-Network-API/)
 
 ## Installation
 
@@ -22,4 +22,4 @@ Clone or Fork the repository to your computer. Enter `npm i` to install dependan
 
 ## Video Walkthrough
 
-[Link to Video]()
+[Link to Video](https://cumauu73.github.io/Social-Network-API/)
